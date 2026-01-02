@@ -3,6 +3,7 @@
   "buildCommand": "cd packages/db && npm run db:generate && cd ../../apps/web && npm run build",
   "devCommand": "cd apps/web && npm run dev",
   "framework": "nextjs",
-  "regions": ["iad1"]
+  "regions": ["iad1"],
+  "outputDirectory": "apps/web/.next"
 }
 

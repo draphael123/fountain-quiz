@@ -4,13 +4,12 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "cd ../../packages/db && npm run db:generate && cd ../../apps/web && next build",
+    "build": "next build",
     "start": "next start",
     "lint": "next lint",
     "db:generate": "cd ../../packages/db && npm run db:generate",
     "db:migrate": "cd ../../packages/db && npm run db:migrate",
-    "db:studio": "cd ../../packages/db && npm run db:studio",
-    "postinstall": "cd ../../packages/db && npm run db:generate"
+    "db:studio": "cd ../../packages/db && npm run db:studio"
   },
   "dependencies": {
     "@fountain-quiz/db": "workspace:*",

@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from 'next/server'
 import { getServerSession } from 'next-auth'
 import { authOptions } from '../../auth/[...nextauth]/route'
 import { prisma } from '@fountain-quiz/db'
-import { generateQuestionsFromChunk, type DocumentChunk } from '@fountain-quiz/shared/question-generator'
+import { generateQuestionsFromChunk, type DocumentChunk } from '@fountain-quiz/shared'
 
 // Note: Install mammoth for DOCX parsing: npm install mammoth
 // For now, this is a placeholder that accepts the file
