@@ -1,5 +1,5 @@
 {
-  "installCommand": "npm install -g pnpm@8.15.0 && pnpm install",
+  "installCommand": "pnpm install",
   "buildCommand": "pnpm --filter @fountain-quiz/web build",
   "devCommand": "pnpm --filter @fountain-quiz/web dev",
   "framework": "nextjs",
