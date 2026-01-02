@@ -1,7 +1,7 @@
 {
-  "installCommand": "pnpm install",
-  "buildCommand": "pnpm --filter @fountain-quiz/web build",
-  "devCommand": "pnpm --filter @fountain-quiz/web dev",
+  "installCommand": "node scripts/prepare-for-vercel.js && npm install",
+  "buildCommand": "cd packages/db && npm run db:generate && cd ../../apps/web && npm run build",
+  "devCommand": "cd apps/web && npm run dev",
   "framework": "nextjs",
   "regions": ["iad1"]
 }
