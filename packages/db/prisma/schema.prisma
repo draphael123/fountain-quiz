@@ -1,0 +1,80 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  name      String?
+  role      String?  // e.g., "admin", "cs", "billing", "rn", "supervisor"
+  team      String?
+  streak    Int      @default(0)
+  settings  Json?    // User preferences (default tags, difficulty, etc.)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  quizAttempts QuizAttempt[]
+
+  @@index([email])
+}
+
+model Question {
+  id          String   @id @default(cuid())
+  prompt      String
+  choices     String[] // For multiple choice, nullable for T/F and fill-blank
+  correctAnswer String // String or index for MCQ
+  explanation String
+  tags        String[] // e.g., ["labs", "labcorp-link", "routing", "pharmacy-curexa"]
+  difficulty  Int      @default(3) // 1-5
+  sourceRef   String?  // Doc section/page/heading reference
+  status      String   @default("draft") // draft | reviewed | published | retired
+  format      String   @default("multiple-choice") // multiple-choice | scenario | true-false | fill-blank
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  attemptItems AttemptItem[]
+
+  @@index([status])
+  @@index([tags])
+  @@index([difficulty])
+}
+
+model QuizAttempt {
+  id        String   @id @default(cuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  score     Float    // Percentage correct
+  mode      String   // "quiz" | "quick-quiz" | "practice"
+  tagsFilter String[] // Tags used to filter questions
+  startedAt DateTime @default(now())
+  completedAt DateTime?
+
+  attemptItems AttemptItem[]
+
+  @@index([userId])
+  @@index([startedAt])
+}
+
+model AttemptItem {
+  id          String   @id @default(cuid())
+  attemptId   String
+  attempt     QuizAttempt @relation(fields: [attemptId], references: [id], onDelete: Cascade)
+  questionId  String
+  question    Question  @relation(fields: [questionId], references: [id])
+  userAnswer  String
+  correct     Boolean
+  timeSpent   Int?      // Milliseconds
+  answeredAt  DateTime  @default(now())
+
+  @@index([attemptId])
+  @@index([questionId])
+}
+

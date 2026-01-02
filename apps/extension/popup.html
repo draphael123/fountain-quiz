@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fountain Quiz</title>
+  <style>
+    body {
+      width: 400px;
+      padding: 16px;
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    }
+    h1 {
+      font-size: 20px;
+      margin: 0 0 16px 0;
+    }
+    .section {
+      margin-bottom: 20px;
+    }
+    .section-title {
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 8px;
+      color: #333;
+    }
+    button {
+      width: 100%;
+      padding: 12px;
+      background: #3b82f6;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+      margin-bottom: 8px;
+    }
+    button:hover {
+      background: #2563eb;
+    }
+    button:disabled {
+      background: #9ca3af;
+      cursor: not-allowed;
+    }
+    input {
+      width: 100%;
+      padding: 8px;
+      border: 1px solid #d1d5db;
+      border-radius: 4px;
+      font-size: 14px;
+      box-sizing: border-box;
+      margin-bottom: 8px;
+    }
+    .search-results {
+      max-height: 300px;
+      overflow-y: auto;
+      margin-top: 8px;
+    }
+    .result-item {
+      padding: 8px;
+      border: 1px solid #e5e7eb;
+      border-radius: 4px;
+      margin-bottom: 8px;
+      font-size: 12px;
+    }
+    .result-item h3 {
+      margin: 0 0 4px 0;
+      font-size: 13px;
+      font-weight: 600;
+    }
+    .result-item p {
+      margin: 0;
+      color: #6b7280;
+    }
+    .loading {
+      text-align: center;
+      padding: 20px;
+      color: #6b7280;
+    }
+  </style>
+</head>
+<body>
+  <h1>Fountain Quiz</h1>
+
+  <div class="section">
+    <div class="section-title">Quick Quiz</div>
+    <button id="startQuiz">Start 5-Question Quiz</button>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Search Knowledge</div>
+    <input type="text" id="searchInput" placeholder="Type to search...">
+    <button id="searchBtn">Search</button>
+    <div id="searchResults" class="search-results"></div>
+  </div>
+
+  <div class="section">
+    <a href="options.html" target="_blank" style="font-size: 12px; color: #3b82f6; text-decoration: none;">Settings</a>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>
+

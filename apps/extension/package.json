@@ -1,0 +1,10 @@
+{
+  "name": "@fountain-quiz/extension",
+  "version": "1.0.0",
+  "description": "Chrome extension for Fountain Quiz",
+  "scripts": {
+    "build": "echo 'Extension build - copy files to dist/'",
+    "package": "zip -r fountain-quiz-extension.zip . -x '*.git*' 'node_modules/*' 'package.json'"
+  }
+}
+

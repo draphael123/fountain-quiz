@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fountain Quiz - Settings</title>
+  <style>
+    body {
+      width: 500px;
+      padding: 24px;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    }
+    h1 {
+      font-size: 24px;
+      margin: 0 0 24px 0;
+    }
+    .form-group {
+      margin-bottom: 20px;
+    }
+    label {
+      display: block;
+      font-size: 14px;
+      font-weight: 500;
+      margin-bottom: 8px;
+    }
+    input[type="text"],
+    input[type="number"],
+    select {
+      width: 100%;
+      padding: 8px;
+      border: 1px solid #d1d5db;
+      border-radius: 4px;
+      font-size: 14px;
+      box-sizing: border-box;
+    }
+    .checkbox-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 8px;
+    }
+    .checkbox-item {
+      display: flex;
+      align-items: center;
+      padding: 6px 12px;
+      border: 1px solid #d1d5db;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    .checkbox-item input {
+      margin-right: 6px;
+    }
+    button {
+      padding: 10px 20px;
+      background: #3b82f6;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #2563eb;
+    }
+    .saved {
+      margin-top: 12px;
+      padding: 8px;
+      background: #d1fae5;
+      color: #065f46;
+      border-radius: 4px;
+      font-size: 12px;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <h1>Fountain Quiz Settings</h1>
+
+  <form id="settingsForm">
+    <div class="form-group">
+      <label>Default Tags (for quick quiz)</label>
+      <div class="checkbox-group" id="tagsContainer"></div>
+    </div>
+
+    <div class="form-group">
+      <label>Default Difficulty</label>
+      <select id="difficulty">
+        <option value="1">Very Easy</option>
+        <option value="2">Easy</option>
+        <option value="3" selected>Medium</option>
+        <option value="4">Hard</option>
+        <option value="5">Very Hard</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label>Default Question Count</label>
+      <input type="number" id="questionCount" min="1" max="20" value="5">
+    </div>
+
+    <button type="submit">Save Settings</button>
+    <div class="saved" id="savedMessage">Settings saved!</div>
+  </form>
+
+  <script src="options.js"></script>
+</body>
+</html>
+
