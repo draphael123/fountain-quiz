@@ -4,12 +4,13 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "pnpm db:generate && next build",
     "start": "next start",
     "lint": "next lint",
     "db:generate": "cd ../../packages/db && pnpm db:generate",
     "db:migrate": "cd ../../packages/db && pnpm db:migrate",
-    "db:studio": "cd ../../packages/db && pnpm db:studio"
+    "db:studio": "cd ../../packages/db && pnpm db:studio",
+    "postinstall": "pnpm db:generate"
   },
   "dependencies": {
     "@fountain-quiz/db": "workspace:*",
